@@ -23,7 +23,6 @@
 #include <stdexcept>
 #include <iostream>
 #include <exception>
-#include <regex>
 #include <pmt/pmt.h>
 #include <boost/thread.hpp>
 
@@ -34,6 +33,7 @@
 #include <libunwind.h>
 #include <cstdio>
 #include <cstdlib>
+#include <regex>
 #endif
 
 namespace gr {
@@ -75,6 +75,7 @@ namespace gr {
 
     void terminate_handler_impl() {
         std::cerr << "terminate reached from thread id: " << boost::this_thread::get_id();
+#ifdef HAVE_LIBUNWIND
         try {
             std::exception_ptr eptr = std::current_exception();
             if (eptr) {
@@ -146,7 +147,6 @@ namespace gr {
         } catch (...) {
             std::cerr << "Got unknown exception" << std::endl;
         }
-#ifdef HAVE_LIBUNWIND
         // Use libunwind to print a backtrace
         print_backtrace();
 #endif

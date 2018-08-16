@@ -26,6 +26,7 @@ GR_CHECK_HDR_N_DEF(sys/resource.h HAVE_SYS_RESOURCE_H)
 find_package(libunwind)
 if(libunwind_FOUND)
     add_definitions(-DHAVE_LIBUNWIND)
+    SET(CMAKE_CXX_STANDARD 11)
 endif(libunwind_FOUND)
 
 ########################################################################
