@@ -1,6 +1,6 @@
 /* -*- c++ -*- */
 /*
- * Copyright 2002 Free Software Foundation, Inc.
+ * Copyright 2006,2009,2010 Free Software Foundation, Inc.
  *
  * This file is part of GNU Radio
  *
@@ -20,24 +20,15 @@
  * Boston, MA 02110-1301, USA.
  */
 
-#ifndef _QA_ATSC_REED_SOLOMON_H_
-#define _QA_ATSC_REED_SOLOMON_H_
+// We need a non-generated C++ file for CMake, all the actual test cases are
+// generated from the template and written to qa_pmt_unv.h
 
-#include <cppunit/extensions/HelperMacros.h>
-#include <cppunit/TestCase.h>
+#include <pmt/api.h> //reason: suppress warnings
+#include <gnuradio/messages/msg_passing.h>
+#include <boost/test/unit_test.hpp>
+#include <boost/format.hpp>
+#include <cstdio>
+#include <cstring>
+#include <sstream>
 
-#include <gnuradio/atsc/reed_solomon_impl.h>
-
-class qa_atsci_reed_solomon : public CppUnit::TestCase {
-
-  CPPUNIT_TEST_SUITE (qa_atsci_reed_solomon);
-  CPPUNIT_TEST (t0_reed_solomon);
-  CPPUNIT_TEST_SUITE_END ();
-
- private:
-  atsci_reed_solomon	rs;
-
-  void t0_reed_solomon ();
-};
-
-#endif /* _QA_ATSC_REED_SOLOMON_H_ */
+#include "qa_pmt_unv.h"
