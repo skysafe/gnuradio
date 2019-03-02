@@ -935,7 +935,9 @@ namespace gr {
   {
     basic_block_vector_t tmp = d_fg->calc_used_blocks();
     for(basic_block_viter_t p = tmp.begin(); p != tmp.end(); p++) {
-      (*p)->set_processor_affinity(mask);
+      if((*p)->unique_id() != d_owner->unique_id()) {
+        (*p)->set_processor_affinity(mask);
+      }
     }
   }
 
