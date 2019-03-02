@@ -284,6 +284,18 @@ namespace gr {
       return gr::basic_block::message_ports_out();
     }
 
+    void block__set_processor_affinity(const std::vector<int> &mask) {
+      return gr::block::set_processor_affinity(mask);
+    }
+
+    void block__unset_processor_affinity() {
+      return gr::block::unset_processor_affinity();
+    }
+
+    std::vector<int> block__processor_affinity() {
+      return gr::block::processor_affinity();
+    }
+
     void set_msg_handler_feval(pmt::pmt_t which_port, gr::feval_p *msg_handler)
     {
       if(msg_queue.find(which_port) == msg_queue.end()) {
